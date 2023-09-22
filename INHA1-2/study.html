@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let computerVal = Math.floor(Math.random()*3);
+        let playerVal
+        let resultText
+
+        function getPlayerHand(a){
+            switch (a) {
+                case 0: return "가위";
+                case 1: return "바위";
+                case 2: return "보";
+                default: return "";
+            }
+        }
+        function PlayerVal(a){
+            playerVal = {
+                val : a,
+                hand : getPlayerHand(a)
+            };
+        
+
+            if (computerVal == playerVal.val) { resultText = "비겼습니다.";}
+            else if ((computerVal+1)%3 == playerVal.val){ resultText = "이겼습니다.";}
+            else { resultText = "졌습니다.";}
+
+            if (computerVal == 0) { computerVal = "가위";}
+            else if (computerVal == 1) { computerVal = "바위";}
+            else { computerVal = "보";}
+            document.getElementById("result").textContent = `${resultText} 컴퓨터의 값은 ${computerVal}, 당신의 값은 ${playerVal.hand}`;
+            //document.getElementById("result").textContent = `${playerVal.val}`ㅒ
+        }
+    </script>
+</head>
+<body>
+    <img src="media/math_img1.png" onclick="PlayerVal(0)">
+    <img src="media/math_img2.png" onclick="PlayerVal(1)">
+    <img src="media/math_img3.png" onclick="PlayerVal(2)">
+
+    <div id="result"></div>
+</body>
+</html>
